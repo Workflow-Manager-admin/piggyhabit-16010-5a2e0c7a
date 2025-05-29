@@ -1,9 +1,189 @@
 :root {
+  /* Kavia legacy palette (for template) */
   --kavia-orange: #E87A41;
   --kavia-dark: #1A1A1A;
   --text-color: #ffffff;
   --text-secondary: rgba(255, 255, 255, 0.7);
   --border-color: rgba(255, 255, 255, 0.1);
+
+  /* PiggyHabit brand palette */
+  --ph-primary: #FFB300;
+  --ph-secondary: #FFF8E1;
+  --ph-accent: #E65100;
+
+  /* Theming */
+  --ph-bg-dark: #181818;
+  --ph-bg-section: #222024;
+  --ph-balance-shadow: 0 4px 20px 0 rgba(255,179,0, 0.14);
+  --ph-progress-bg: #252525;
+  --ph-history-bg: #201c1a;
+}
+
+/* DARK THEME BASE STYLES FOR PIGGYHABIT */
+body {
+  margin: 0;
+  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  background-color: var(--ph-bg-dark);
+  color: var(--text-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.piggyhabit-main {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ph-bg-dark);
+  color: var(--text-color);
+  align-items: center;
+  padding-top: 64px;
+  padding-bottom: 16px;
+}
+
+/* Balance Display */
+.balance-display {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--ph-primary);
+  background: var(--ph-bg-section);
+  box-shadow: var(--ph-balance-shadow);
+  border-radius: 1rem;
+  padding: 28px 0 20px 0;
+  margin-bottom: 12px;
+  width: 270px;
+  text-align: center;
+  position: relative;
+}
+
+.piggy-icon {
+  display: block;
+  margin: 0 auto -32px auto;
+  width: 96px;
+  height: 96px;
+  background: none;
+}
+
+@media (max-width: 500px) {
+  .balance-display {
+    font-size: 2.1rem;
+    width: 98vw;
+    min-width: 0;
+    padding: 22px 0 15px 0;
+  }
+  .piggy-icon {
+    width: 72px; height: 72px;
+  }
+}
+
+/* Add and Remove Buttons */
+.ph-btn {
+  background: var(--ph-primary);
+  color: #1A1A1A;
+  border: none;
+  border-radius: 7px;
+  padding: 13px 30px;
+  margin: 8px 10px 8px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background 0.15s, box-shadow 0.18s;
+  box-shadow: 0 1px 8px 0 rgba(255,179,0,0.09);
+  cursor: pointer;
+  outline: none;
+}
+.ph-btn--remove {
+  background: var(--ph-accent);
+  color: #FFF8E1;
+  box-shadow: 0 1px 8px 0 rgba(230,81,0,0.09);
+}
+.ph-btn:active, .ph-btn--remove:active {
+  filter: brightness(0.93);
+}
+.ph-btn:focus, .ph-btn--remove:focus {
+  box-shadow: 0 0 0 2px var(--ph-primary), 0 1px 8px 0 rgba(255,179,0,0.15);
+}
+
+/* Progress Bar toward Goal */
+.progress-container {
+  margin: 0 auto 22px auto;
+  padding: 16px 0 4px 0;
+  width: 95vw;
+  max-width: 360px;
+  text-align: center;
+}
+.progress-label {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+.progress-bar-bg {
+  height: 18px;
+  border-radius: 8px;
+  width: 100%;
+  background: var(--ph-progress-bg);
+  border: 1.5px solid var(--ph-secondary);
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 8px 0 0 8px;
+  background: linear-gradient(90deg, var(--ph-primary) 60%, var(--ph-accent) 98%);
+  transition: width 0.4s cubic-bezier(0.53,0.3,0.48,0.99);
+}
+
+/* Savings History */
+.savings-history-section {
+  background: var(--ph-history-bg);
+  color: var(--text-color);
+  border-radius: 0.8rem 0.8rem 0 0;
+  box-shadow: 0 -6px 26px 0 rgba(27, 16, 0, 0.08);
+  margin: 36px auto 0 auto;
+  padding: 24px 16px 30px 16px;
+  width: 100vw;
+  max-width: 440px;
+  min-height: 150px;
+}
+
+.history-title {
+  color: var(--ph-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.history-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.02);
+  border-bottom: 1px solid var(--ph-secondary);
+  padding: 11px 0;
+  font-size: 1rem;
+  position: relative;
+  transition: background 0.13s;
+}
+.history-item-add {
+  color: var(--ph-primary);
+}
+.history-item-remove {
+  color: var(--ph-accent);
+}
+.history-amount {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.history-date {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-left: 16px;
+  text-align: right;
+  min-width: 93px;
+  flex-shrink: 0;
 }
 
 body {
