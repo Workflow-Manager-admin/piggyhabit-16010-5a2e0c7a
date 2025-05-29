@@ -22,7 +22,7 @@
 /* DARK THEME BASE STYLES FOR PIGGYHABIT */
 body {
   margin: 0;
-  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
   background-color: var(--ph-bg-dark);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
@@ -38,6 +38,7 @@ body {
   align-items: center;
   padding-top: 64px;
   padding-bottom: 16px;
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
 }
 
 /* Balance Display */
