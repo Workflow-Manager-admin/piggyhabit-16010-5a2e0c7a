@@ -187,14 +187,7 @@ body {
   flex-shrink: 0;
 }
 
-body {
-  margin: 0;
-  font-family: 'Inter', 'Roboto', 'Helvetica', 'Arial', sans-serif;
-  background-color: var(--kavia-dark);
-  color: var(--text-color);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* -- Removed duplicate body styles for font-family; all are set above with updated font stack -- */
 
 .app {
   min-height: 100vh;
