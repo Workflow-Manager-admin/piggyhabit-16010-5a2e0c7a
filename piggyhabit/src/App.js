@@ -51,7 +51,7 @@ function formatDateShort(date) {
   });
 }
 
-import { useMemo } from 'react';
+/* Duplicate import removed */
 // PUBLIC_INTERFACE
 // Main container for PiggyHabit app
 function App() {

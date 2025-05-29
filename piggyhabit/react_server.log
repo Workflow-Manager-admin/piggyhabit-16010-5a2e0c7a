@@ -129,3 +129,6 @@ src/App.js
   Line 54:9:  Parsing error: Identifier 'useMemo' has already been declared. (54:9)
 
 webpack compiled with 2 errors
+Compiling...
+Compiled successfully!
+webpack compiled successfully
