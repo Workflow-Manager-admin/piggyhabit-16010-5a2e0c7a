@@ -234,6 +234,7 @@ body {
   padding: 0 24px;
   width: 100%;
   box-sizing: border-box;
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
 }
 
 .hero {
