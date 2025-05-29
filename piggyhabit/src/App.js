@@ -265,12 +265,88 @@ function App() {
                 className={`history-item history-item-${entry.type}`}
                 aria-label={
                   entry.type === 'add'
-                    ? `Saved $${entry.amount.toFixed(2)}`
-                    : `Removed $${entry.amount.toFixed(2)}`
+                    ? `Added $${entry.amount.toFixed(2)} on ${formatDateShort(entry.date)}`
+                    : `Removed $${entry.amount.toFixed(2)} on ${formatDateShort(entry.date)}`
                 }
+                style={{
+                  borderLeft: `5px solid ${
+                    entry.type === 'add'
+                      ? 'var(--ph-primary)'
+                      : 'var(--ph-accent)'
+                  }`,
+                  background:
+                    entry.type === 'add'
+                      ? 'rgba(255,179,0,0.04)'
+                      : 'rgba(230,81,0,0.045)',
+                  marginBottom: 2,
+                  borderRadius: 4,
+                  paddingLeft: 11,
+                  alignItems: 'center',
+                  minHeight: 42,
+                }}
               >
-                <span className="history-amount" style={{ marginRight: 18 }}>
-                  {entry.type === 'add' ? '+' : '–'}${entry.amount.toFixed(2)}
+                <span
+                  className="history-amount"
+                  style={{
+                    marginRight: 18,
+                    fontWeight: 700,
+                    letterSpacing: 0.3,
+                    fontSize: '1.08em',
+                    display: 'flex',
+                    alignItems: 'center',
+                  }}
+                >
+                  {entry.type === 'add' ? (
+                    <span
+                      style={{
+                        background: 'var(--ph-primary)',
+                        color: '#181818',
+                        padding: '3px 10px',
+                        borderRadius: '5px',
+                        fontWeight: 700,
+                        marginRight: 9,
+                        minWidth: 31,
+                        textAlign: 'center',
+                        fontSize: '0.98em',
+                        boxShadow: '0 1px 5px 0 rgba(255,179,0, 0.13)',
+                      }}
+                    >
+                      +${entry.amount.toFixed(2)}
+                    </span>
+                  ) : (
+                    <span
+                      style={{
+                        background: 'var(--ph-accent)',
+                        color: '#FFF8E1',
+                        padding: '3px 10px',
+                        borderRadius: '5px',
+                        fontWeight: 700,
+                        marginRight: 9,
+                        minWidth: 31,
+                        textAlign: 'center',
+                        fontSize: '0.98em',
+                        boxShadow: '0 1px 5px 0 rgba(230,81,0, 0.12)',
+                      }}
+                    >
+                      –${entry.amount.toFixed(2)}
+                    </span>
+                  )}
+                  <span
+                    style={{
+                      fontSize: '0.98em',
+                      fontWeight: 500,
+                      color:
+                        entry.type === 'add'
+                          ? 'var(--ph-primary)'
+                          : 'var(--ph-accent)',
+                      textShadow:
+                        entry.type === 'add'
+                          ? '0 1px 4px #56420033'
+                          : '0 1px 4px #20100820',
+                    }}
+                  >
+                    {entry.type === 'add' ? 'Add' : 'Remove'}
+                  </span>
                 </span>
                 <span className="history-date">
                   {formatDateShort(entry.date)}
