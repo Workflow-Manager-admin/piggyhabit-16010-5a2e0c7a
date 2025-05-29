@@ -1,6 +1,20 @@
 import React, { useState } from 'react';
 import './App.css';
 
+// Motivational quotes array (static)
+const MOTIVATIONAL_QUOTES = [
+  "Little by little, a little becomes a lot.",
+  "Saving today, thriving tomorrow.",
+  "Every penny counts on the road to your goal.",
+  "Good habits bring great rewards.",
+  "Dreams get closer with every deposit.",
+  "Small savings, big future.",
+  "Discipline is your best investment.",
+  "Money grows by a dollar at a time.",
+  "You're investing in yourself every time you save.",
+  "Piggy banks build real dreams!"
+];
+
 // PUBLIC_INTERFACE
 // Piggy bank SVG icon component
 const PiggyBankIcon = () => (
