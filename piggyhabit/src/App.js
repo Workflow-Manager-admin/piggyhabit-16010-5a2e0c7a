@@ -145,6 +145,29 @@ function App() {
           ${balance.toFixed(2)}
         </div>
       </div>
+      {/* Motivational quote display */}
+      <div
+        style={{
+          maxWidth: 350,
+          margin: '0 auto 20px auto',
+          padding: '18px 14px 9px 14px',
+          color: 'var(--ph-secondary)',
+          background: 'rgba(255,255,255,0.03)',
+          borderRadius: 13,
+          fontSize: '1.13rem',
+          fontFamily: "'Inter', 'Roboto', Arial, sans-serif",
+          fontStyle: 'italic',
+          fontWeight: 600,
+          letterSpacing: '0.02em',
+          textAlign: 'center',
+          textShadow: '0 1.5px 7px #100c012f',
+          boxShadow: '0 2px 10px 0 rgba(255,179,0,0.06)',
+          border: '1px solid var(--ph-secondary)',
+        }}
+        aria-label="Motivational quote"
+      >
+        {selectedQuote}
+      </div>
 
       {/* Add/Remove savings controls */}
       <form

@@ -56,3 +56,18 @@ src/App.js
 Search for the keywords to learn more about each error.
 
 webpack compiled with 1 error and 1 warning
+Compiling...
+Failed to compile.
+
+[eslint] 
+src/App.js
+  Line 54:1:  Import in body of module; reorder to top  import/first
+
+Search for the keywords to learn more about each error.
+ERROR in [eslint] 
+src/App.js
+  Line 54:1:  Import in body of module; reorder to top  import/first
+
+Search for the keywords to learn more about each error.
+
+webpack compiled with 1 error
