@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
 
-// Inline SVG for the piggy bank icon
+// PUBLIC_INTERFACE
+// Piggy bank SVG icon component
 const PiggyBankIcon = () => (
   <svg
     className="piggy-icon"
@@ -25,12 +26,10 @@ const PiggyBankIcon = () => (
   </svg>
 );
 
-/**
- * Format a Date object as a human readable short string.
- * Example output: "Tue 5:36 PM"
- */
+// PUBLIC_INTERFACE
+// Formats a JS Date as a readable string for history
 function formatDateShort(date) {
-  return date.toLocaleString(undefined, {
+  return new Date(date).toLocaleString(undefined, {
     weekday: 'short',
     hour: '2-digit',
     minute: '2-digit',
@@ -38,18 +37,19 @@ function formatDateShort(date) {
   });
 }
 
+// PUBLIC_INTERFACE
+// Main container for PiggyHabit app
 function App() {
-  // PUBLIC_INTERFACE
-  // Main state management for PiggyHabit: balance, savings goal, history, input fields, and error handling.
+  // Local state for all app data (in-memory only)
   const [balance, setBalance] = useState(0);
-  const [goal, setGoal] = useState(100); // Default goal
+  const [goal, setGoal] = useState(100);
   const [goalInput, setGoalInput] = useState('100');
   const [amountInput, setAmountInput] = useState('');
-  const [history, setHistory] = useState([]); // {type: "add"|"remove", amount, date}
+  const [history, setHistory] = useState([]); // [{type, amount, date}]
   const [error, setError] = useState('');
 
-  // Handle adding savings
   // PUBLIC_INTERFACE
+  // Add savings (validates positive number; updates state)
   function handleAddSavings(e) {
     e.preventDefault();
     setError('');
@@ -66,8 +66,8 @@ function App() {
     setAmountInput('');
   }
 
-  // Handle removing savings
   // PUBLIC_INTERFACE
+  // Remove savings (cannot go negative; validates input)
   function handleRemoveSavings(e) {
     e.preventDefault();
     setError('');
@@ -88,8 +88,8 @@ function App() {
     setAmountInput('');
   }
 
-  // Handle goal change input (live)
   // PUBLIC_INTERFACE
+  // Input handler for setting goal (accepts only positive numbers)
   function handleGoalInputChange(e) {
     const val = e.target.value;
     if (/^\d*$/.test(val)) {
@@ -98,7 +98,7 @@ function App() {
   }
 
   // PUBLIC_INTERFACE
-  // When pressing "Set Goal", validate and update the goal
+  // Apply new goal after validation on form submit
   function handleSetGoal(e) {
     e.preventDefault();
     const val = parseInt(goalInput, 10);
@@ -110,7 +110,7 @@ function App() {
     setError('');
   }
 
-  // Calculate goal progress (capped at 100%)
+  // Derived goal progress state
   const progressRatio = Math.max(0, Math.min(balance / (goal || 1), 1));
   const progressBarWidth = `${progressRatio * 100}%`;
 
@@ -124,7 +124,7 @@ function App() {
         </div>
       </div>
 
-      {/* Add/Remove savings form & input */}
+      {/* Add/Remove savings controls */}
       <form
         onSubmit={handleAddSavings}
         style={{
@@ -134,7 +134,7 @@ function App() {
           marginBottom: 18,
           gap: 0
         }}
-        autoComplete='off'
+        autoComplete="off"
       >
         <input
           type="text"
@@ -192,7 +192,7 @@ function App() {
         >{error}</div>
       )}
 
-      {/* Progress bar and goal section */}
+      {/* Progress bar & savings goal section */}
       <section className="progress-container" style={{ marginBottom: 15 }}>
         <div className="progress-label" id="progress-description">
           Savings Goal: <span style={{ color: 'var(--ph-primary)', fontWeight: 600 }}>${goal}</span>&nbsp;
@@ -206,7 +206,7 @@ function App() {
             style={{ width: progressBarWidth }}
           />
         </div>
-        {/* Inline set-goal input */}
+        {/* Inline goal update input */}
         <form
           onSubmit={handleSetGoal}
           style={{ marginTop: 10, display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 0 }}
@@ -249,6 +249,7 @@ function App() {
           </button>
         </form>
       </section>
+
       {/* Savings History Section */}
       <section className="savings-history-section">
         <div className="history-title">Savings History</div>
