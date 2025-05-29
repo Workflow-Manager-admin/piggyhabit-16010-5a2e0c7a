@@ -51,6 +51,7 @@ function formatDateShort(date) {
   });
 }
 
+import { useMemo } from 'react';
 // PUBLIC_INTERFACE
 // Main container for PiggyHabit app
 function App() {
@@ -61,6 +62,13 @@ function App() {
   const [amountInput, setAmountInput] = useState('');
   const [history, setHistory] = useState([]); // [{type, amount, date}]
   const [error, setError] = useState('');
+
+  // PUBLIC_INTERFACE
+  // Select a random quote once per mount/refresh
+  const selectedQuote = useMemo(() => {
+    const idx = Math.floor(Math.random() * MOTIVATIONAL_QUOTES.length);
+    return MOTIVATIONAL_QUOTES[idx];
+  }, []);
 
   // PUBLIC_INTERFACE
   // Add savings (validates positive number; updates state)
